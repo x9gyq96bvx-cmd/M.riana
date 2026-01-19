@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>MARIANA 🌷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+margin:0;
+height:100vh;
+font-family:-apple-system,BlinkMacSystemFont;
+background:linear-gradient(#fbefff,#ffffff);
+display:flex;
+justify-content:center;
+align-items:center;
+}
+.chat{
+width:100%;
+max-width:380px;
+height:100%;
+max-height:640px;
+background:#fff;
+border-radius:24px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+display:flex;
+flex-direction:column;
+overflow:hidden;
+}
+.messages{
+flex:1;
+padding:16px;
+overflow-y:auto;
+color:#555;
+font-size:15px;
+}
+.msg{
+margin-bottom:10px;
+padding:10px 14px;
+border-radius:16px;
+max-width:80%;
+}
+.mariana{
+background:#f2edff;
+}
+.user{
+background:#ffeaf2;
+align-self:flex-end;
+}
+.input{
+border-top:1px solid #eee;
+padding:10px;
+display:flex;
+gap:8px;
+}
+input{
+flex:1;
+border-radius:18px;
+border:1px solid #ddd;
+padding:10px;
+}
+button{
+border:none;
+background:#e6dcff;
+border-radius:50%;
+width:40px;
+height:40px;
+}
+</style>
+</head>
+<body>
+
+<div class="chat">
+<div class="messages" id="messages">
+<div class="msg mariana">
+oi…<br>
+eu sou a MARIANA 🌷<br>
+quando você falar,<br>
+eu respondo.
+</div>
+</div>
+
+<div class="input">
+<input id="text" placeholder="escreva…">
+<button onclick="send()">↩︎</button>
+</div>
+</div>
+
+<script>
+const replies=["tô aqui.","te escuto…","sem pressa.","pode ficar.","entendo.","eu fico."];
+function send(){
+const i=document.getElementById("text");
+const m=document.getElementById("messages");
+const t=i.value.trim();
+if(!t)return;
+const u=document.createElement("div");
+u.className="msg user";
+u.innerText=t;
+m.appendChild(u);
+i.value="";
+const r=document.createElement("div");
+r.className="msg mariana";
+r.innerText=replies[Math.floor(Math.random()*replies.length)];
+m.appendChild(r);
+m.scrollTop=m.scrollHeight;
+}
+</script>
+
+</body>
+</html>
